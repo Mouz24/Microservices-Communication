@@ -1,0 +1,78 @@
+version: '3.4'
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: db
+    volumes:
+      - db_data:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=password@12345#
+      - DBNAME=Product
+    networks:
+      - mynetwork
+    ports:
+      - 8001:1433
+
+  db2:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: db2
+    volumes:
+      - db2_data:/var/opt/mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=password@123456#
+      - DBNAME=Order
+    networks:
+      - mynetwork
+    ports:
+      - 8002:1433
+
+  order:
+    image: ${DOCKER_REGISTRY-}order
+    build:
+      context: .
+      dockerfile: Order/Dockerfile
+    networks:
+      - mynetwork
+    ports:
+      - 8003:80
+
+  product:
+    image: ${DOCKER_REGISTRY-}product
+    build:
+      context: .
+      dockerfile: Product/Dockerfile
+    networks:
+      - mynetwork
+    ports:
+      - 8004:80
+  
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    hostname: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - mynetwork
+
+  rabbitmqlistener:
+    image: ${DOCKER_REGISTRY-}rabbitmqlistener
+    build:
+      context: .
+      dockerfile: RabbitMQListener/Dockerfile
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+
+volumes:
+  db_data:
+  db2_data:

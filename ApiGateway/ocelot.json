@@ -1,0 +1,55 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/order",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "order",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/order",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "order",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/product",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/product",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "product",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/product",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/product/{productId}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "product",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/api/product/{productId}",
+      "UpstreamHttpMethod": [ "Get" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8000"
+  }
+}

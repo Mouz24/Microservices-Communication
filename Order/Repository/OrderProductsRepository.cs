@@ -22,6 +22,16 @@ namespace Order.Repository
             }
         }
 
+        public void AddProductsToOrderDTO(Entities.Models.Order order, IEnumerable<Product> products)
+        {
+            foreach (var product in products)
+            {
+                var productEntity = _productRepository.GetProduct(product.Name, false);
+
+                AddProductToOrder(order, productEntity);
+            }
+        }
+
         public void AddProductToOrder(Entities.Models.Order order, Product product)
         {
             OrderProducts orderProducts = new OrderProducts

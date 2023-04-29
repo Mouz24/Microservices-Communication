@@ -39,9 +39,17 @@ namespace Order.Repository
             return await FindAll(trackChanges).OrderBy(order => order.Total).ToListAsync();
         }
 
-        public List<OrderProducts> GetOrder(Guid orderId)
+        public List<OrderDTO> GetOrder(Guid orderId)
         {
-            return _orderContext.OrderProducts.Include(product => product.Product).Where(order => order.OrderId.Equals(orderId)).ToList();
+            return _orderContext.OrderProducts.Include(product => product.Product).Include(order => order.Order).Where(order => order.OrderId
+                .Equals(orderId))
+                .Select(order => new OrderDTO
+                {
+                    Id = order.OrderId,
+                    DateCreated = order.Order.DateCreated,
+                    Total = order.Order.Total,
+                    Product = order.Product
+                }).ToList();
         }
     }
 }

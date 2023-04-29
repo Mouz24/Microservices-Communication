@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Order", "Order\Order.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RabbitMQListener", "RabbitMQListener\RabbitMQListener.csproj", "{D8B147FC-082B-4C8F-9374-6F7A46448A03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product", "Product\Product.csproj", "{08A49D64-E47B-49F1-A6D7-23CB32CE5346}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product", "Product\Product.csproj", "{08A49D64-E47B-49F1-A6D7-23CB32CE5346}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{10E9DFAC-8D6A-4660-899F-AF48F1071041}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiGateway", "ApiGateway\ApiGateway.csproj", "{E6696EDA-A7F3-4407-B136-143335DD18C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{10E9DFAC-8D6A-4660-899F-AF48F1071041}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10E9DFAC-8D6A-4660-899F-AF48F1071041}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10E9DFAC-8D6A-4660-899F-AF48F1071041}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6696EDA-A7F3-4407-B136-143335DD18C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6696EDA-A7F3-4407-B136-143335DD18C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6696EDA-A7F3-4407-B136-143335DD18C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6696EDA-A7F3-4407-B136-143335DD18C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

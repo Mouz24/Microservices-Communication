@@ -1,5 +1,6 @@
 ﻿using Order.Contracts;
 using Order.Entities.Models;
+using Order.Entities.Models.DTOs;
 using Order.Service.IService;
 
 namespace Order.Service
@@ -28,7 +29,7 @@ namespace Order.Service
             return await _orderRepository.GetAll(trackChanges);
         }
 
-        public List<OrderProducts> GetOrder(Guid orderId)
+        public List<OrderDTO> GetOrder(Guid orderId)
         {
             return _orderRepository.GetOrder(orderId);
         }

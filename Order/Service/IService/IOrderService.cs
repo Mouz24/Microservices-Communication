@@ -1,4 +1,5 @@
 ﻿using Order.Entities.Models;
+using Order.Entities.Models.DTOs;
 
 namespace Order.Service.IService
 {
@@ -7,6 +8,6 @@ namespace Order.Service.IService
         public Order.Entities.Models.Order CreateOrder();
         public void AddOrder(Entities.Models.Order order);
         public Task<IEnumerable<Entities.Models.Order>> GetAll(bool trackChanges);
-        public List<OrderProducts> GetOrder(Guid orderId);
+        public List<OrderDTO> GetOrder(Guid orderId);
     }
 }

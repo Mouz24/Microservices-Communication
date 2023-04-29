@@ -38,7 +38,7 @@ services:
       - mynetwork
     ports:
       - 8003:80
-
+    
   product:
     image: ${DOCKER_REGISTRY-}product
     build:
@@ -48,7 +48,7 @@ services:
       - mynetwork
     ports:
       - 8004:80
-  
+    
   rabbitmq:
     image: rabbitmq:management
     container_name: rabbitmq
@@ -69,6 +69,18 @@ services:
       dockerfile: RabbitMQListener/Dockerfile
     networks:
       - mynetwork
+
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/Dockerfile
+    volumes:
+      - ./ocelot.json:/app/configuration/ocelot.json
+    networks:
+      - mynetwork
+    ports:
+      - 8000:80
 
 networks:
   mynetwork:
